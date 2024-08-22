@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Repeater</title>
+    <style>
+        body {
+            background-image: url('https://assets.onecompiler.app/42pw3bqaa/42pw5yj7w/bad_boy__7__by_punkerlazar_dg1skvm-fullview.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff; /* White text color */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 120px; /* Space for the WhatsApp button */
+        }
+      .text-box {
+    margin: 20px auto; /* Center the box */
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+    width: 100%; /* Full width */
+    max-width: 350px; /* Limit maximum width */
+    height: 400px; /* Fixed height */
+    overflow-y: scroll; /* Scroll if content exceeds height */
+    text-align: left;
+    background-color: #333;
+}
+
+}
+
+        }
+        .form-group {
+            margin: 10px;
+        }
+        .form-group input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            background-color: #222;
+            color: #ffffff;
+            width: calc(100% - 22px); /* Adjust width for padding and border */
+        }
+        .form-group button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745; /* Green background for Repeat Text */
+            color: #ffffff;
+            cursor: pointer;
+            width: calc(100% - 22px); /* Adjust width for padding and border */
+            margin: 5px 0; /* Margin for spacing */
+        }
+        .form-group button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        .form-group .copy-button {
+            background-color: #ffc107; /* Yellow background for Copy */
+        }
+        .form-group .copy-button:hover {
+            background-color: #e0a800; /* Darker yellow on hover */
+        }
+        .animated-text {
+            font-size: 24px;
+            font-weight: bold;
+            animation: colorChange 2s infinite; /* Color-changing animation */
+            margin-top: 20px;
+        }
+        @keyframes colorChange {
+            0% { color: red; }
+            50% { color: green; }
+            100% { color: red; }
+        }
+        .whatsapp-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #25D366; /* WhatsApp green */
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px; /* Space above the button */
+        }
+        .whatsapp-button:hover {
+            background-color: #1DA851; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Repeater</h1>
+        <div class="form-group">
+            <input type="text" id="input-text" placeholder="Enter your text" />
+            <input type="number" id="input-number" placeholder="Number of repetitions" />
+            <button onclick="repeatText()">Repeat Text</button>
+            <button class="copy-button" onclick="copyText()">Copy Text</button>
+        </div>
+        <div class="text-box" id="text-box">
+            <!-- Repeated text will be displayed here -->
+        </div>
+        <div class="animated-text">by Sasi</div>
+        <a href="https://feji.us/b8mxp1" class="whatsapp-button" target="_blank">Contact Me on WhatsApp</a>
+    </div>
+
+    <script>
+        function repeatText() {
+            const text = document.getElementById('input-text').value;
+            const number = parseInt(document.getElementById('input-number').value, 10);
+            let result = '';
+            if (text && !isNaN(number)) {
+                for (let i = 1; i <= number; i++) {
+                    result += i + '. ' + text + '<br>';
+                }
+            } else {
+                result = 'Please enter valid text and number.';
+            }
+            document.getElementById('text-box').innerHTML = result;
+        }
+
+        function copyText() {
+            const textBox = document.getElementById('text-box');
+            const range = document.createRange();
+            range.selectNode(textBox);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            alert('Text copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
